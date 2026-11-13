@@ -16,25 +16,25 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="border-b border-white/[0.06] bg-[#08080B] py-20 sm:py-28"
+      className="border-b border-white/[0.06] bg-[#08080B] py-14 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-medium text-rose-400">Core Capabilities</p>
           <h2
-            className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl"
             style={{ textWrap: 'balance' }}
           >
             Engineered for seamless Android streaming
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-400">
+          <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:mt-4 sm:text-base">
             Every layer of StreamX is built around clean media discovery, responsive playback
             controls, and flexible source management.
           </p>
         </div>
 
         {/* Asymmetric Bento Grid */}
-        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-12">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-12 sm:gap-5 lg:grid-cols-12">
           {/* 1. Featured Wide Card: Premium Video Player */}
           <motion.article
             initial={{ opacity: 0, y: 14 }}

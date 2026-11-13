@@ -4,7 +4,7 @@ import type { StreamXRelease } from '../config/release';
 import { StreamXLogo } from './StreamXLogo';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
+  { label: 'StreamX AI', href: '#assistant' },
   { label: 'Features', href: '#features' },
   { label: 'Extensions', href: '#extensions' },
   { label: 'Install Guide', href: '#install-guide' },
@@ -29,8 +29,8 @@ export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarP
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/[0.07] bg-[#08080B]/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
+    <header className="relative z-40 border-b border-white/[0.07] bg-[#08080B]/85 backdrop-blur-xl md:sticky md:top-0">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-8 px-4 sm:px-6 md:h-16 lg:px-8">
         {/* Zone 1: Single clean brand wordmark */}
         <a
           href="#home"
@@ -72,7 +72,7 @@ export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarP
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-zinc-200 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-zinc-200 transition-colors active:bg-white/[0.08] hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 md:hidden"
           >
             {mobileOpen ? (
               <X className="h-5 w-5" aria-hidden="true" />
@@ -88,7 +88,7 @@ export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarP
         <nav
           id="mobile-navigation"
           aria-label="Mobile Navigation"
-          className="border-t border-white/[0.07] bg-[#0B0B10] px-4 py-4 md:hidden"
+          className="border-t border-white/[0.07] bg-[#0B0B10] px-4 py-3 md:hidden"
         >
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((item) => (
@@ -96,7 +96,7 @@ export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarP
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-white"
+                className="flex min-h-[44px] items-center rounded-xl px-3 text-sm font-medium text-zinc-200 transition-colors active:bg-white/[0.08] hover:bg-white/[0.05] hover:text-white"
               >
                 {item.label}
               </a>
@@ -107,7 +107,7 @@ export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarP
               rel={isExternalDownload ? 'noopener noreferrer' : undefined}
               download={!isExternalDownload ? release.apkFileName : undefined}
               onClick={handleNavDownload}
-              className="mt-2 inline-flex items-center justify-center rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-500"
+              className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-rose-600 px-4 text-sm font-semibold text-white transition-transform active:scale-[0.98] hover:bg-rose-500"
             >
               Download APK
             </a>

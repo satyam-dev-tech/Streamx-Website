@@ -17,7 +17,7 @@ export function Toast({ toast, onDismiss }: ToastProps) {
   return (
     <div
       aria-live="polite"
-      className="pointer-events-none fixed bottom-5 right-5 z-50 flex max-w-sm flex-col gap-2 px-4 sm:px-0"
+      className="pointer-events-none fixed bottom-20 left-4 right-4 z-50 flex flex-col gap-2 sm:left-auto sm:right-5 sm:max-w-sm md:bottom-5"
     >
       <AnimatePresence>
         {toast && (

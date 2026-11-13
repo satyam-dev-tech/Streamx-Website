@@ -49,24 +49,24 @@ export function InstallGuideSection() {
   return (
     <section
       id="install-guide"
-      className="border-b border-white/[0.06] bg-[#08080B] py-20 sm:py-28"
+      className="border-b border-white/[0.06] bg-[#08080B] py-14 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-sm font-medium text-rose-400">Installation Guide</p>
           <h2
-            className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl"
+            className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl"
             style={{ textWrap: 'balance' }}
           >
             Set up StreamX on Android in five steps
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-zinc-400">
+          <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:mt-4 sm:text-base">
             Follow these steps to sideload the APK safely on any compatible Android smartphone or
             tablet.
           </p>
         </div>
 
-        <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-8 grid grid-cols-1 gap-3.5 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-5">
           {INSTALL_STEPS.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -76,7 +76,7 @@ export function InstallGuideSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.35, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#101016] p-6 transition-colors duration-200 hover:border-white/[0.18]"
+                className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#101016] p-5 transition-colors duration-200 hover:border-white/[0.18] sm:p-6"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -87,11 +87,13 @@ export function InstallGuideSection() {
                       <Icon className="h-4 w-4" aria-hidden="true" />
                     </div>
                   </div>
-                  <h3 className="mt-5 font-display text-base font-semibold leading-snug text-white">
+                  <h3 className="mt-4 font-display text-base font-semibold leading-snug text-white sm:mt-5">
                     {step.title}
                   </h3>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{step.description}</p>
+                <p className="mt-2.5 text-sm leading-relaxed text-zinc-400 sm:mt-3">
+                  {step.description}
+                </p>
               </motion.li>
             );
           })}

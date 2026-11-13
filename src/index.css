@@ -11,7 +11,8 @@
     font-family: var(--font-sans);
     background-color: #08080B;
     color: #F4F4F5;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
+    overflow-x: clip;
   }
 
   h1, h2, h3, .font-display {
@@ -23,7 +24,17 @@
     letter-spacing: 0.01em;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
+
+  a, button {
+    touch-action: manipulation;
+  }
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -6,7 +6,9 @@ import { FeaturesSection } from './components/FeaturesSection';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
 import { InstallGuideSection } from './components/InstallGuideSection';
+import { MobileBottomBar } from './components/MobileBottomBar';
 import { Navbar } from './components/Navbar';
+import { StreamXAssistantSection } from './components/StreamXAssistantSection';
 import { Toast, type ToastMessage } from './components/Toast';
 import { WhatsNewSection } from './components/WhatsNewSection';
 import { useReleaseManifest } from './hooks/useReleaseManifest';
@@ -84,6 +86,7 @@ export default function App() {
           isExternalDownload={isExternalDownload}
           onDownloadClick={onDownloadClick}
         />
+        <StreamXAssistantSection release={release} />
         <FeaturesSection />
         <DownloadSection
           release={release}
@@ -97,6 +100,12 @@ export default function App() {
       </main>
 
       <Footer />
+
+      <MobileBottomBar
+        release={release}
+        isExternalDownload={isExternalDownload}
+        onDownloadClick={onDownloadClick}
+      />
 
       <ApkPlaceholderModal
         isOpen={isPlaceholderModalOpen}

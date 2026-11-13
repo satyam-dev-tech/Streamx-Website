@@ -9,13 +9,13 @@ export function WhatsNewSection({ release }: WhatsNewSectionProps) {
   return (
     <section
       id="whats-new"
-      className="border-b border-white/[0.06] bg-[#08080B] py-20 sm:py-28"
+      className="border-b border-white/[0.06] bg-[#08080B] py-14 sm:py-24 lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-4 border-b border-white/[0.08] pb-8 sm:flex-row sm:items-end">
+        <div className="flex flex-col justify-between gap-4 border-b border-white/[0.08] pb-6 sm:flex-row sm:items-end sm:pb-8">
           <div>
             <p className="text-sm font-medium text-rose-400">Release Notes</p>
-            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-4xl">
               What&apos;s New in StreamX
             </h2>
           </div>
@@ -31,9 +31,9 @@ export function WhatsNewSection({ release }: WhatsNewSectionProps) {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-3">
           {/* New Features */}
-          <article className="rounded-2xl border border-white/[0.08] bg-[#101016] p-6 sm:p-7">
+          <article className="rounded-2xl border border-white/[0.08] bg-[#101016] p-5 sm:p-7">
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-rose-400">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />

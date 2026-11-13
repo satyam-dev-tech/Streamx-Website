@@ -49,7 +49,7 @@ export function HeroSection({
         <div className="absolute inset-0 bg-gradient-to-r from-[#08080B] via-[#08080B]/75 to-transparent" />
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-12 lg:gap-10 lg:px-8 lg:py-28">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-10 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:px-8 lg:py-28">
         {/* Left column: Brand pitch & CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -57,7 +57,7 @@ export function HeroSection({
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-7"
         >
-          <div className="mb-6 flex items-center gap-3 text-xs font-medium text-zinc-400">
+          <div className="mb-5 flex items-center gap-3 text-xs font-medium text-zinc-400">
             <StreamXLogo className="scale-95 origin-left" />
             <span aria-hidden="true" className="text-zinc-600">
               /
@@ -68,27 +68,27 @@ export function HeroSection({
           <h1
             className="font-display font-bold tracking-tight text-white"
             style={{
-              fontSize: 'clamp(2.5rem, 4.6vw, 4.125rem)',
-              lineHeight: 1.06,
+              fontSize: 'clamp(2.25rem, 4.6vw, 4.125rem)',
+              lineHeight: 1.08,
               textWrap: 'balance',
             }}
           >
             Your Entertainment. Your Way.
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-300 sm:mt-5 sm:text-lg">
             Discover movies and series with a premium streaming experience. Built for Android with
             4K playback support, multiple streaming sources, and a refined dark cinema interface.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <a
               href={release.downloadUrl}
               target={isExternalDownload ? '_blank' : undefined}
               rel={isExternalDownload ? 'noopener noreferrer' : undefined}
               download={!isExternalDownload ? release.apkFileName : undefined}
               onClick={handlePrimaryClick}
-              className="inline-flex min-h-[48px] items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-950/30 transition-all duration-150 hover:bg-rose-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-950/30 transition-all duration-150 active:scale-[0.98] hover:bg-rose-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 sm:w-auto"
             >
               <ArrowDownToLine className="h-4 w-4 shrink-0" aria-hidden="true" />
               <span>Download StreamX APK</span>
@@ -96,7 +96,7 @@ export function HeroSection({
 
             <a
               href="#features"
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-zinc-100 backdrop-blur-md transition-colors duration-150 hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-zinc-100 backdrop-blur-md transition-all duration-150 active:scale-[0.98] hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 sm:w-auto"
             >
               <span>Explore Features</span>
               <ChevronRight className="h-4 w-4 shrink-0 text-zinc-400" aria-hidden="true" />
@@ -104,20 +104,20 @@ export function HeroSection({
           </div>
 
           {/* Unboxed typographic metadata strip */}
-          <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-white/[0.08] pt-6">
+          <dl className="mt-8 grid max-w-lg grid-cols-3 gap-3 border-t border-white/[0.08] pt-5 sm:mt-10 sm:gap-6 sm:pt-6">
             <div>
-              <dt className="text-xs text-zinc-500">Latest Version</dt>
-              <dd className="mt-1 font-mono text-sm font-medium tabular-nums text-zinc-100">
+              <dt className="text-[11px] text-zinc-500 sm:text-xs">Latest Version</dt>
+              <dd className="mt-1 font-mono text-xs font-medium tabular-nums text-zinc-100 sm:text-sm">
                 v{release.version}
               </dd>
             </div>
             <div>
-              <dt className="text-xs text-zinc-500">Compatibility</dt>
-              <dd className="mt-1 text-sm font-medium text-zinc-100">Android 8.0+</dd>
+              <dt className="text-[11px] text-zinc-500 sm:text-xs">Compatibility</dt>
+              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">Android 8.0+</dd>
             </div>
             <div>
-              <dt className="text-xs text-zinc-500">Video Support</dt>
-              <dd className="mt-1 text-sm font-medium text-zinc-100">4K UHD Playback</dd>
+              <dt className="text-[11px] text-zinc-500 sm:text-xs">Video Support</dt>
+              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">4K UHD</dd>
             </div>
           </dl>
         </motion.div>
@@ -129,7 +129,7 @@ export function HeroSection({
           transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5"
         >
-          <div className="relative mx-auto max-w-[340px] sm:max-w-[380px] lg:max-w-none">
+          <div className="relative mx-auto max-w-[260px] sm:max-w-[340px] lg:max-w-none">
             <div
               className="pointer-events-none absolute -inset-4 rounded-[2.25rem] bg-gradient-to-tr from-rose-600/15 via-transparent to-zinc-400/10 blur-2xl"
               aria-hidden="true"
