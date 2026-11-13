@@ -1,0 +1,6 @@
+{
+  "name": "StreamX",
+  "description": "Official website for StreamX, a premium Android movie and TV streaming application with 4K playback support, multiple streaming sources, and compatible extension repositories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

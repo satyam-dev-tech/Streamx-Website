@@ -1,0 +1,63 @@
+export interface ReleaseChangelog {
+  newFeatures: string[];
+  improvements: string[];
+  bugFixes: string[];
+}
+
+export interface StreamXRelease {
+  appName: string;
+  version: string;
+  releaseDate: string;
+  fileSize: string;
+  androidCompatibility: string;
+  architecture: string;
+  apkFileName: string;
+  /**
+   * Direct download URL for the StreamX APK.
+   * Default placeholder points to `/downloads/streamx-latest.apk`.
+   * Replace this in `/public/release-manifest.json` (runtime) or here (compile-time)
+   * with a hosted APK file path or external release asset URL.
+   */
+  downloadUrl: string;
+  /**
+   * Set to false once the real APK binary is uploaded to `downloadUrl`.
+   */
+  isPlaceholderBuild: boolean;
+  whatsNew: ReleaseChangelog;
+}
+
+export const DEFAULT_RELEASE: StreamXRelease = {
+  appName: 'StreamX',
+  version: '1.4.0',
+  releaseDate: 'November 13, 2026',
+  fileSize: '42.8 MB',
+  androidCompatibility: 'Android 8.0+ (API 26+)',
+  architecture: 'Universal (arm64-v8a / armeabi-v7a)',
+  apkFileName: 'streamx-latest.apk',
+  downloadUrl: '/downloads/streamx-latest.apk',
+  isPlaceholderBuild: true,
+  whatsNew: {
+    newFeatures: [
+      'Added adaptive 4K playback profile selector directly inside the video player overlay.',
+      'Introduced unified local watchlist organization with quick resume for ongoing TV series.',
+      'Added built-in manifest URL importer for compatible streaming extension repositories.',
+    ],
+    improvements: [
+      'Reduced cold-start launch time and poster grid scroll latency on mid-range Android devices.',
+      'Refined multi-source stream switching with cleaner source quality labeling.',
+      'Improved gesture sensitivity for brightness and volume adjustments during full-screen playback.',
+    ],
+    bugFixes: [
+      'Resolved an issue where external subtitle tracks could reset when switching streaming sources.',
+      'Fixed occasional playback state loss after rotating between portrait and landscape modes.',
+      'Corrected watchlist artwork caching when offline or on metered mobile connections.',
+    ],
+  },
+};
+
+export const EXTENSION_REPOSITORY = {
+  name: 'Phisher98 Extensions',
+  officialUrl: 'https://github.com/phisher98/cloudstream-extensions-phisher',
+  manifestUrl:
+    'https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json',
+} as const;
