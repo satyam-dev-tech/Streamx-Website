@@ -5,19 +5,23 @@ import type { StreamXRelease } from '../config/release';
 
 interface DownloadSectionProps {
   release: StreamXRelease;
+  isExternalDownload: boolean;
   isCheckingDownload: boolean;
   onDownloadClick: () => void;
 }
 
 export function DownloadSection({
   release,
+  isExternalDownload,
   isCheckingDownload,
   onDownloadClick,
 }: DownloadSectionProps) {
   const [iconFailed, setIconFailed] = useState(false);
 
   const handleDownload = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+    if (!isExternalDownload || release.isPlaceholderBuild) {
+      event.preventDefault();
+    }
     onDownloadClick();
   };
 
@@ -100,7 +104,7 @@ export function DownloadSection({
 
             {/* Right: Primary direct download action */}
             <div className="flex flex-col justify-center rounded-2xl border border-white/[0.08] bg-black/40 p-6 sm:p-8 lg:col-span-5">
-              <p className="text-xs font-medium text-zinc-400">Direct APK Installer</p>
+              <p className="text-xs font-medium text-zinc-400">Official APK Download</p>
               <p className="mt-1 font-display text-xl font-semibold text-white">
                 {release.apkFileName}
               </p>
@@ -108,7 +112,9 @@ export function DownloadSection({
 
               <a
                 href={release.downloadUrl}
-                download={release.apkFileName}
+                target={isExternalDownload ? '_blank' : undefined}
+                rel={isExternalDownload ? 'noopener noreferrer' : undefined}
+                download={!isExternalDownload ? release.apkFileName : undefined}
                 onClick={handleDownload}
                 aria-busy={isCheckingDownload}
                 className="mt-6 inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-xl bg-rose-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-rose-950/40 transition-all duration-150 hover:bg-rose-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
@@ -121,7 +127,7 @@ export function DownloadSection({
 
               <div className="mt-4 space-y-1.5 text-xs text-zinc-400">
                 <p className="flex items-center justify-between gap-2">
-                  <span>Configured URL:</span>
+                  <span className="shrink-0">Download Source:</span>
                   <code className="truncate font-mono text-zinc-300">{release.downloadUrl}</code>
                 </p>
                 {release.isPlaceholderBuild && (

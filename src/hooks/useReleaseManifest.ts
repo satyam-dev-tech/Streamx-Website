@@ -42,11 +42,18 @@ export function useReleaseManifest() {
     };
   }, []);
 
+  const isExternalDownload = /^https?:\/\//i.test(release.downloadUrl);
+
   const triggerDirectDownload = () => {
     const link = document.createElement('a');
     link.href = release.downloadUrl;
-    link.setAttribute('download', release.apkFileName || 'streamx-latest.apk');
-    link.rel = 'noopener noreferrer';
+    if (isExternalDownload) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    } else {
+      link.setAttribute('download', release.apkFileName || 'StreamX-v1.0.0.apk');
+      link.rel = 'noopener noreferrer';
+    }
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,6 +61,12 @@ export function useReleaseManifest() {
 
   const handleApkDownload = async (onStarted?: () => void) => {
     if (isCheckingDownload) return;
+
+    if (isExternalDownload && !release.isPlaceholderBuild) {
+      onStarted?.();
+      return;
+    }
+
     setIsCheckingDownload(true);
 
     try {
@@ -93,6 +106,7 @@ export function useReleaseManifest() {
 
   return {
     release,
+    isExternalDownload,
     isCheckingDownload,
     isPlaceholderModalOpen,
     setIsPlaceholderModalOpen,

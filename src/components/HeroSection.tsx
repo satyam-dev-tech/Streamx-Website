@@ -8,15 +8,22 @@ import { StreamXLogo } from './StreamXLogo';
 
 interface HeroSectionProps {
   release: StreamXRelease;
+  isExternalDownload: boolean;
   onDownloadClick: () => void;
 }
 
-export function HeroSection({ release, onDownloadClick }: HeroSectionProps) {
+export function HeroSection({
+  release,
+  isExternalDownload,
+  onDownloadClick,
+}: HeroSectionProps) {
   const [backdropFailed, setBackdropFailed] = useState(false);
   const [phoneFailed, setPhoneFailed] = useState(false);
 
   const handlePrimaryClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+    if (!isExternalDownload || release.isPlaceholderBuild) {
+      event.preventDefault();
+    }
     onDownloadClick();
   };
 
@@ -77,7 +84,9 @@ export function HeroSection({ release, onDownloadClick }: HeroSectionProps) {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href={release.downloadUrl}
-              download={release.apkFileName}
+              target={isExternalDownload ? '_blank' : undefined}
+              rel={isExternalDownload ? 'noopener noreferrer' : undefined}
+              download={!isExternalDownload ? release.apkFileName : undefined}
               onClick={handlePrimaryClick}
               className="inline-flex min-h-[48px] items-center justify-center gap-2.5 whitespace-nowrap rounded-xl bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-950/30 transition-all duration-150 hover:bg-rose-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
             >

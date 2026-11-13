@@ -1,13 +1,13 @@
 {
   "appName": "StreamX",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "releaseDate": "November 13, 2026",
   "fileSize": "42.8 MB",
   "androidCompatibility": "Android 8.0+ (API 26+)",
   "architecture": "Universal (arm64-v8a / armeabi-v7a)",
-  "apkFileName": "streamx-latest.apk",
-  "downloadUrl": "/downloads/streamx-latest.apk",
-  "isPlaceholderBuild": true,
+  "apkFileName": "StreamX-v1.0.0.apk",
+  "downloadUrl": "https://www.mediafire.com/file/a8311ppbop96vq8/StreamX-v1.0.0.apk.apk/file",
+  "isPlaceholderBuild": false,
   "whatsNew": {
     "newFeatures": [
       "Added adaptive 4K playback profile selector directly inside the video player overlay.",

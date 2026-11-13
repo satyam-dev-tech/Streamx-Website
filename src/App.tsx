@@ -14,6 +14,7 @@ import { useReleaseManifest } from './hooks/useReleaseManifest';
 export default function App() {
   const {
     release,
+    isExternalDownload,
     isCheckingDownload,
     isPlaceholderModalOpen,
     setIsPlaceholderModalOpen,
@@ -47,7 +48,7 @@ export default function App() {
   const onDownloadClick = () => {
     handleApkDownload(() => {
       showToast(
-        'Starting StreamX APK download',
+        'Opening StreamX APK download',
         'If Android asks for permission, allow installation from this source to continue.',
         'info',
       );
@@ -71,13 +72,22 @@ export default function App() {
         Skip to content
       </a>
 
-      <Navbar />
+      <Navbar
+        release={release}
+        isExternalDownload={isExternalDownload}
+        onDownloadClick={onDownloadClick}
+      />
 
       <main id="main-content">
-        <HeroSection release={release} onDownloadClick={onDownloadClick} />
+        <HeroSection
+          release={release}
+          isExternalDownload={isExternalDownload}
+          onDownloadClick={onDownloadClick}
+        />
         <FeaturesSection />
         <DownloadSection
           release={release}
+          isExternalDownload={isExternalDownload}
           isCheckingDownload={isCheckingDownload}
           onDownloadClick={onDownloadClick}
         />

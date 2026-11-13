@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
+import type { StreamXRelease } from '../config/release';
 import { StreamXLogo } from './StreamXLogo';
 
 const NAV_LINKS = [
@@ -10,8 +11,22 @@ const NAV_LINKS = [
   { label: "What's New", href: '#whats-new' },
 ] as const;
 
-export function Navbar() {
+interface NavbarProps {
+  release: StreamXRelease;
+  isExternalDownload: boolean;
+  onDownloadClick: () => void;
+}
+
+export function Navbar({ release, isExternalDownload, onDownloadClick }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleNavDownload = (event: MouseEvent<HTMLAnchorElement>) => {
+    setMobileOpen(false);
+    if (!isExternalDownload || release.isPlaceholderBuild) {
+      event.preventDefault();
+    }
+    onDownloadClick();
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/[0.07] bg-[#08080B]/80 backdrop-blur-xl">
@@ -41,7 +56,11 @@ export function Navbar() {
         {/* Zone 3: Single primary action */}
         <div className="flex items-center gap-3 shrink-0">
           <a
-            href="#download"
+            href={release.downloadUrl}
+            target={isExternalDownload ? '_blank' : undefined}
+            rel={isExternalDownload ? 'noopener noreferrer' : undefined}
+            download={!isExternalDownload ? release.apkFileName : undefined}
+            onClick={handleNavDownload}
             className="hidden whitespace-nowrap shrink-0 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition-colors duration-150 hover:bg-rose-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 md:inline-flex"
           >
             Download APK
@@ -83,8 +102,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#download"
-              onClick={() => setMobileOpen(false)}
+              href={release.downloadUrl}
+              target={isExternalDownload ? '_blank' : undefined}
+              rel={isExternalDownload ? 'noopener noreferrer' : undefined}
+              download={!isExternalDownload ? release.apkFileName : undefined}
+              onClick={handleNavDownload}
               className="mt-2 inline-flex items-center justify-center rounded-lg bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-500"
             >
               Download APK
