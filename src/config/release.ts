@@ -28,29 +28,29 @@ export interface StreamXRelease {
 
 export const DEFAULT_RELEASE: StreamXRelease = {
   appName: 'StreamX',
-  version: '1.0.0',
-  releaseDate: 'November 13, 2026',
+  version: '1.1.0',
+  releaseDate: 'November 14, 2026',
   fileSize: '42.8 MB',
   androidCompatibility: 'Android 8.0+ (API 26+)',
   architecture: 'Universal (arm64-v8a / armeabi-v7a)',
-  apkFileName: 'StreamX-v1.0.0.apk',
-  downloadUrl: 'https://www.mediafire.com/file/a8311ppbop96vq8/StreamX-v1.0.0.apk.apk/file',
+  apkFileName: 'Streamx apk.apk',
+  downloadUrl: 'https://www.mediafire.com/file/wap7o1wxly0kxp9/Streamx+apk.apk/file',
   isPlaceholderBuild: false,
   whatsNew: {
     newFeatures: [
-      'Added adaptive 4K playback profile selector directly inside the video player overlay.',
-      'Introduced unified local watchlist organization with quick resume for ongoing TV series.',
-      'Added built-in manifest URL importer for compatible streaming extension repositories.',
+      'Added 4K Ultra HD video quality support with sharper adaptive playback.',
+      'Integrated EAX 4.1 surround sound audio support for richer 4.1-channel spatial output.',
+      'Added smoother UI transitions, fluid screen animations, and responsive player gestures.',
     ],
     improvements: [
-      'Reduced cold-start launch time and poster grid scroll latency on mid-range Android devices.',
-      'Refined multi-source stream switching with cleaner source quality labeling.',
-      'Improved gesture sensitivity for brightness and volume adjustments during full-screen playback.',
+      'Upgraded player audio track settings for EAX 4.1 surround sound compatibility.',
+      'Smoothed scrolling physics across movie and TV show catalogs on Android phones.',
+      'Refined 4K stream buffering and multi-source switching speed.',
     ],
     bugFixes: [
       'Resolved an issue where external subtitle tracks could reset when switching streaming sources.',
       'Fixed occasional playback state loss after rotating between portrait and landscape modes.',
-      'Corrected watchlist artwork caching when offline or on metered mobile connections.',
+      'Corrected audio channel balance edge cases on wired and Bluetooth audio devices.',
     ],
   },
 };

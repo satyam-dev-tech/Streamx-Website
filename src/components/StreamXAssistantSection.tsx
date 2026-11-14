@@ -14,17 +14,17 @@ interface StreamXAssistantSectionProps {
 }
 
 const STARTER_PROMPTS = [
+  'How do I enable 4K video and EAX 4.1 surround sound?',
   'How do I install StreamX on Android?',
   'How do I add the Phisher98 Extensions repository?',
-  'What Android version and video quality are supported?',
-  "What's new in the latest release?",
+  "What's new in StreamX v1.1.0?",
 ] as const;
 
 export function StreamXAssistantSection({ release }: StreamXAssistantSectionProps) {
   const initialGreeting: ChatMessage = {
     id: 'greeting',
     role: 'assistant',
-    content: `Ask me anything about StreamX v${release.version} — Android APK installation, unknown-source permissions, 4K playback, watchlist features, or adding Phisher98 Extensions.`,
+    content: `Ask me anything about StreamX v${release.version} — 4K video quality, EAX 4.1 surround sound, smoother UI animations, Android APK installation, or adding Phisher98 Extensions.`,
   };
 
   const [messages, setMessages] = useState<ChatMessage[]>([initialGreeting]);
@@ -44,7 +44,7 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
             {
               id: 'greeting',
               role: 'assistant',
-              content: `Ask me anything about StreamX v${release.version} — Android APK installation, unknown-source permissions, 4K playback, watchlist features, or adding Phisher98 Extensions.`,
+              content: `Ask me anything about StreamX v${release.version} — 4K video quality, EAX 4.1 surround sound, smoother UI animations, Android APK installation, or adding Phisher98 Extensions.`,
             },
           ]
         : prev,

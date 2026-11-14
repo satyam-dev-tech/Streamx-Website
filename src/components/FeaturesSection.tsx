@@ -54,7 +54,7 @@ export function FeaturesSection() {
               </div>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
                 Responsive touch gestures for brightness, volume, and timeline scrubbing paired with
-                clean subtitle and audio track controls.
+                EAX 4.1 surround audio settings and crisp subtitle controls.
               </p>
             </div>
 
@@ -76,7 +76,7 @@ export function FeaturesSection() {
             </div>
           </motion.article>
 
-          {/* 2. 4K Playback Support */}
+          {/* 2. 4K Playback & EAX 4.1 Surround Sound */}
           <motion.article
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -89,18 +89,18 @@ export function FeaturesSection() {
                 <MonitorPlay className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="mt-5 font-display text-xl font-semibold text-white">
-                4K Playback Support
+                4K Playback &amp; EAX 4.1 Surround Sound
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                Watch compatible streams in crisp Ultra HD resolution. StreamX adapts smoothly to
-                your screen density and available network bandwidth without cluttering the viewport.
+                Stream compatible titles in crisp 4K Ultra HD video paired with EAX 4.1 surround
+                sound settings for deeper spatial audio clarity on headphones and speakers.
               </p>
             </div>
 
             <div className="mt-8 border-t border-white/[0.07] pt-5">
-              <p className="text-xs text-zinc-500">Supported Resolution Tiers</p>
+              <p className="text-xs text-zinc-500">Video &amp; Audio Profiles</p>
               <p className="mt-1.5 font-mono text-sm text-zinc-200">
-                2160p UHD · 1080p FHD · 720p HD
+                2160p 4K UHD · EAX 4.1 Surround · 1080p
               </p>
             </div>
           </motion.article>
@@ -165,7 +165,7 @@ export function FeaturesSection() {
             </p>
           </motion.article>
 
-          {/* 6. Modern Cinematic Interface (Full-row showcase) */}
+          {/* 6. Modern Cinematic Interface */}
           <motion.article
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -179,23 +179,23 @@ export function FeaturesSection() {
                   <Sparkles className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-white">
-                  Modern Cinematic Interface
+                  Modern Cinematic Interface &amp; Smoother Animations
                 </h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                Crafted with an obsidian dark canvas, balanced typography, and fluid transitions so
-                posters, trailers, and playback stay front and center on any Android screen.
+                Crafted with an obsidian dark canvas, fluid page transitions, smoother scrolling
+                animations, and thumb-friendly controls so browsing and playback feel effortless.
               </p>
             </div>
 
             <div className="grid shrink-0 grid-cols-2 gap-4 border-t border-white/[0.08] pt-5 sm:gap-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <div>
-                <p className="text-xs text-zinc-500">Theme</p>
-                <p className="mt-1 text-sm font-semibold text-zinc-100">AMOLED Dark UI</p>
+                <p className="text-xs text-zinc-500">Motion</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-100">Fluid Animations</p>
               </div>
               <div>
-                <p className="text-xs text-zinc-500">Navigation</p>
-                <p className="mt-1 text-sm font-semibold text-zinc-100">Thumb-Friendly</p>
+                <p className="text-xs text-zinc-500">Audio &amp; UI</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-100">EAX 4.1 · Dark UI</p>
               </div>
             </div>
           </motion.article>

@@ -51,7 +51,7 @@ export function useReleaseManifest() {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
     } else {
-      link.setAttribute('download', release.apkFileName || 'StreamX-v1.0.0.apk');
+      link.setAttribute('download', release.apkFileName || 'Streamx apk.apk');
       link.rel = 'noopener noreferrer';
     }
     document.body.appendChild(link);

@@ -52,13 +52,13 @@ function loadReleaseManifest(): ReleaseManifest {
 
   return {
     appName: 'StreamX',
-    version: '1.0.0',
-    releaseDate: 'November 13, 2026',
+    version: '1.1.0',
+    releaseDate: 'November 14, 2026',
     fileSize: '42.8 MB',
     androidCompatibility: 'Android 8.0+ (API 26+)',
     architecture: 'Universal (arm64-v8a / armeabi-v7a)',
-    apkFileName: 'StreamX-v1.0.0.apk',
-    downloadUrl: 'https://www.mediafire.com/file/a8311ppbop96vq8/StreamX-v1.0.0.apk.apk/file',
+    apkFileName: 'Streamx apk.apk',
+    downloadUrl: 'https://www.mediafire.com/file/wap7o1wxly0kxp9/Streamx+apk.apk/file',
   };
 }
 
@@ -71,35 +71,39 @@ function buildStreamXSystemInstruction(): string {
   return `You are the official StreamX AI Assistant on the StreamX website.
 
 STRICT SCOPE RULE:
-You are trained EXCLUSIVELY to answer questions about StreamX (the Android movie and TV streaming application), its APK downloads, Android installation, features, troubleshooting, and compatible extension repositories.
+You are trained EXCLUSIVELY to answer questions about StreamX (the Android movie and TV streaming application), its APK downloads, Android installation, settings, features, troubleshooting, and compatible extension repositories.
 If a user asks about ANYTHING unrelated to StreamX (for example: general knowledge, coding, math, politics, recipes, other unrelated apps, or general chit-chat), you MUST politely decline in 1-2 sentences and steer them back to StreamX topics only.
 
 VERIFIED STREAMX KNOWLEDGE BASE (do not invent unverified features, stats, or platforms):
 - Product Name: StreamX (Android movie and TV streaming application). Not available for iOS or desktop natively unless run via Android environment; never claim an iOS or Windows release exists.
-- Latest Version: ${manifest.version ?? '1.0.0'} (Released ${manifest.releaseDate ?? 'November 13, 2026'})
-- APK File Name: ${manifest.apkFileName ?? 'StreamX-v1.0.0.apk'}
+- Latest Version: ${manifest.version ?? '1.1.0'} (Released ${manifest.releaseDate ?? 'November 14, 2026'})
+- APK File Name: ${manifest.apkFileName ?? 'Streamx apk.apk'}
 - APK File Size: ${manifest.fileSize ?? '42.8 MB'}
 - Android Compatibility: ${manifest.androidCompatibility ?? 'Android 8.0+ (API 26+)'}, ${manifest.architecture ?? 'Universal (arm64-v8a / armeabi-v7a)'}
-- Official APK Download URL: ${manifest.downloadUrl ?? 'https://www.mediafire.com/file/a8311ppbop96vq8/StreamX-v1.0.0.apk.apk/file'}
+- Official APK Download URL: ${manifest.downloadUrl ?? 'https://www.mediafire.com/file/wap7o1wxly0kxp9/Streamx+apk.apk/file'}
+- Updated Settings & Capabilities:
+  - 4K Quality Video: Supports 4K Ultra HD (2160p UHD) video playback as well as 1080p FHD and 720p HD tiers.
+  - EAX 4.1 Surround Sound: Supports EAX 4.1 surround sound audio processing in player/audio settings for richer 4.1-channel spatial output.
+  - Smoother Animations: Updated UI transitions, smoother scrolling physics across catalogs, and fluid player gesture animations.
 - Core Features:
   1. Movies & TV Shows: Browse organized feature films and multi-season series catalogs.
-  2. Premium Video Player: Touch gestures for brightness, volume, and timeline scrubbing, plus subtitle and audio track controls.
+  2. Premium Video Player: Touch gestures for brightness, volume, and timeline scrubbing, plus subtitle and EAX 4.1 audio track controls.
   3. Multiple Streaming Sources: Switch between available playback mirrors and resolutions if a source buffers.
-  4. 4K Playback Support: Adaptive playback supporting 2160p UHD, 1080p FHD, and 720p HD tiers.
+  4. 4K Playback & EAX 4.1 Surround Sound: Adaptive 4K UHD video quality paired with EAX 4.1 spatial surround audio.
   5. Personalized Watchlist: Save movies and ongoing series locally to resume quickly.
-  6. Modern Cinematic Interface: AMOLED dark UI with thumb-friendly navigation.
+  6. Modern Cinematic Interface: AMOLED dark UI with fluid animations and thumb-friendly navigation.
 - Extensions Repository:
   - Featured Repository: Phisher98 Extensions
   - Official Repository GitHub: https://github.com/phisher98/cloudstream-extensions-phisher
   - Repository Manifest JSON URL: https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json
   - Setup note: Users can copy the manifest URL from the Extensions section and add it inside StreamX extension settings (if supported by their installed build).
 - 5-Step Android Installation Guide:
-  1. Download the StreamX APK (${manifest.apkFileName ?? 'StreamX-v1.0.0.apk'}).
+  1. Download the StreamX APK (${manifest.apkFileName ?? 'Streamx apk.apk'}).
   2. Open the downloaded APK from browser downloads or the Android Files app.
   3. Allow installation from this source if Android asks ("Install unknown apps" permission for your browser/file manager).
   4. Tap Install.
   5. Open StreamX and enjoy.
-- What's New in v${manifest.version ?? '1.0.0'}:
+- What's New in v${manifest.version ?? '1.1.0'}:
   - New Features: ${featuresList}
   - Improvements: ${improvementsList}
   - Bug Fixes: ${fixesList}
@@ -179,24 +183,45 @@ async function startServer() {
         parts: [{ text: m.content }],
       }));
 
-      const response = await client.models.generateContent({
-        model: 'gemini-4-hydrogen',
-        contents,
-        config: {
-          systemInstruction: buildStreamXSystemInstruction(),
-          thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
-        },
-      });
+      let responseText: string | undefined;
+      let lastError: unknown;
 
-      const reply = response.text?.trim();
-      if (!reply) {
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          const response = await client.models.generateContent({
+            model: 'gemini-4-hydrogen',
+            contents,
+            config: {
+              systemInstruction: buildStreamXSystemInstruction(),
+              thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
+            },
+          });
+          responseText = response.text?.trim();
+          if (responseText) break;
+        } catch (attemptErr: unknown) {
+          lastError = attemptErr;
+          const errStatus =
+            typeof attemptErr === 'object' && attemptErr !== null && 'status' in attemptErr
+              ? Number((attemptErr as { status?: unknown }).status)
+              : 500;
+          if (errStatus === 400 || errStatus === 403 || errStatus === 429) {
+            throw attemptErr;
+          }
+          if (attempt === 0) {
+            await new Promise((resolve) => setTimeout(resolve, 600));
+          }
+        }
+      }
+
+      if (!responseText) {
+        if (lastError) throw lastError;
         res.status(502).json({
           error: 'StreamX Assistant could not generate a response. Please try asking again.',
         });
         return;
       }
 
-      res.json({ reply });
+      res.json({ reply: responseText });
     } catch (err: unknown) {
       const status =
         typeof err === 'object' && err !== null && 'status' in err
@@ -204,14 +229,14 @@ async function startServer() {
           : 500;
       const message = err instanceof Error ? err.message : 'Unexpected assistant error';
 
-      if (status === 400 || status === 403) {
-        res.status(status).json({
+      if (status === 400 || status === 403 || message.includes('PERMISSION_DENIED') || message.includes('API_KEY_INVALID')) {
+        res.status(status === 400 || status === 403 ? status : 403).json({
           error: 'Assistant API authentication failed. Please check GEMINI_API_KEY in Settings > Secrets.',
         });
         return;
       }
 
-      if (status === 429) {
+      if (status === 429 || message.includes('RESOURCE_EXHAUSTED')) {
         res.status(429).json({
           error: 'StreamX Assistant is receiving too many requests right now. Please wait a moment and try again.',
         });

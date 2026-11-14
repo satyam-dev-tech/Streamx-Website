@@ -110,7 +110,10 @@ export function DownloadSection({
               <p className="mt-1 font-display text-xl font-semibold text-white">
                 {release.apkFileName}
               </p>
-              <p className="mt-1 text-xs text-zinc-500">{release.architecture}</p>
+              <p className="mt-1 text-xs text-zinc-400">
+                4K UHD Video · EAX 4.1 Surround · Smoother Animations
+              </p>
+              <p className="mt-0.5 text-xs text-zinc-500">{release.architecture}</p>
 
               <a
                 href={release.downloadUrl}

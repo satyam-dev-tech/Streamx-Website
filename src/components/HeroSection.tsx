@@ -78,7 +78,7 @@ export function HeroSection({
 
           <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-300 sm:mt-5 sm:text-lg">
             Discover movies and series with a premium streaming experience. Built for Android with
-            4K playback support, multiple streaming sources, and a refined dark cinema interface.
+            4K quality video, EAX 4.1 surround sound, and smoother animations throughout.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
@@ -112,12 +112,12 @@ export function HeroSection({
               </dd>
             </div>
             <div>
-              <dt className="text-[11px] text-zinc-500 sm:text-xs">Compatibility</dt>
-              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">Android 8.0+</dd>
+              <dt className="text-[11px] text-zinc-500 sm:text-xs">Video Quality</dt>
+              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">4K UHD</dd>
             </div>
             <div>
-              <dt className="text-[11px] text-zinc-500 sm:text-xs">Video Support</dt>
-              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">4K UHD</dd>
+              <dt className="text-[11px] text-zinc-500 sm:text-xs">Audio Engine</dt>
+              <dd className="mt-1 text-xs font-medium text-zinc-100 sm:text-sm">EAX 4.1 Surround</dd>
             </div>
           </dl>
         </motion.div>
