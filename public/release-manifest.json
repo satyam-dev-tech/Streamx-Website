@@ -1,28 +1,28 @@
 {
   "appName": "StreamX",
-  "version": "1.1.0",
-  "releaseDate": "November 14, 2026",
-  "fileSize": "42.8 MB",
+  "version": "1.2.0",
+  "releaseDate": "November 15, 2026",
+  "fileSize": "Size Optimized",
   "androidCompatibility": "Android 8.0+ (API 26+)",
   "architecture": "Universal (arm64-v8a / armeabi-v7a)",
-  "apkFileName": "Streamx apk.apk",
-  "downloadUrl": "https://www.mediafire.com/file/wap7o1wxly0kxp9/Streamx+apk.apk/file",
+  "apkFileName": "Streamx.apk",
+  "downloadUrl": "https://www.mediafire.com/file/yu8xugkjbml4z2x/Streamx.apk/file",
   "isPlaceholderBuild": false,
   "whatsNew": {
     "newFeatures": [
-      "Added 4K Ultra HD video quality support with sharper adaptive playback.",
-      "Integrated EAX 4.1 surround sound audio support for richer 4.1-channel spatial output.",
-      "Added smoother UI transitions, fluid screen animations, and responsive player gestures."
+      "Introduced a premium Liquid Glass navigation bar with a translucent glass design, colourful reflections, and a spacious capsule-shaped layout.",
+      "Added a water-fluid switching animation that stretches, morphs, and flows smoothly between active navigation tabs.",
+      "Added tap and finger-drag tab switching so the liquid indicator follows your finger and settles smoothly on the selected destination."
     ],
     "improvements": [
-      "Upgraded player audio track settings for EAX 4.1 surround sound compatibility.",
-      "Smoothed scrolling physics across movie and TV show catalogs on Android phones.",
-      "Refined 4K stream buffering and multi-source switching speed."
+      "Optimized navigation animations for smoother, lag-free performance with efficient GPU rendering and reduced unnecessary calculations.",
+      "Completed APK size optimization including code shrinking, resource optimization, unused dependency removal, image compression, and native library packaging improvements.",
+      "Preserved all existing streaming features, 4K UHD video playback, EAX 4.1 surround sound, subtitles, audio tracks, and provider integrations."
     ],
     "bugFixes": [
+      "Eliminated frame stutters during rapid tab tapping and continuous finger-drag navigation gestures.",
       "Resolved an issue where external subtitle tracks could reset when switching streaming sources.",
-      "Fixed occasional playback state loss after rotating between portrait and landscape modes.",
-      "Corrected audio channel balance edge cases on wired and Bluetooth audio devices."
+      "Fixed occasional playback state loss after rotating between portrait and landscape modes."
     ]
   }
 }

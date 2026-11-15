@@ -111,7 +111,7 @@ export function DownloadSection({
                 {release.apkFileName}
               </p>
               <p className="mt-1 text-xs text-zinc-400">
-                4K UHD Video · EAX 4.1 Surround · Smoother Animations
+                Liquid Glass UI · 4K UHD · EAX 4.1 Surround · Shrunk APK
               </p>
               <p className="mt-0.5 text-xs text-zinc-500">{release.architecture}</p>
 

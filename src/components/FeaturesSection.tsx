@@ -179,23 +179,24 @@ export function FeaturesSection() {
                   <Sparkles className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-xl font-semibold text-white">
-                  Modern Cinematic Interface &amp; Smoother Animations
+                  Liquid Glass UI &amp; Water-Fluid Animations
                 </h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                Crafted with an obsidian dark canvas, fluid page transitions, smoother scrolling
-                animations, and thumb-friendly controls so browsing and playback feel effortless.
+                Features a translucent capsule Liquid Glass navigation bar with colourful
+                reflections, GPU-optimized water-fluid tab switching on tap or drag, and an obsidian
+                dark canvas built for effortless browsing.
               </p>
             </div>
 
             <div className="grid shrink-0 grid-cols-2 gap-4 border-t border-white/[0.08] pt-5 sm:gap-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <div>
-                <p className="text-xs text-zinc-500">Motion</p>
-                <p className="mt-1 text-sm font-semibold text-zinc-100">Fluid Animations</p>
+                <p className="text-xs text-zinc-500">Navigation</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-100">Liquid Glass · Tap &amp; Drag</p>
               </div>
               <div>
-                <p className="text-xs text-zinc-500">Audio &amp; UI</p>
-                <p className="mt-1 text-sm font-semibold text-zinc-100">EAX 4.1 · Dark UI</p>
+                <p className="text-xs text-zinc-500">Build</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-100">GPU Fluid · Shrunk APK</p>
               </div>
             </div>
           </motion.article>

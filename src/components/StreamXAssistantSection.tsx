@@ -14,17 +14,17 @@ interface StreamXAssistantSectionProps {
 }
 
 const STARTER_PROMPTS = [
+  "What's new in the StreamX v1.2.0 Liquid Glass update?",
   'How do I enable 4K video and EAX 4.1 surround sound?',
   'How do I install StreamX on Android?',
   'How do I add the Phisher98 Extensions repository?',
-  "What's new in StreamX v1.1.0?",
 ] as const;
 
 export function StreamXAssistantSection({ release }: StreamXAssistantSectionProps) {
   const initialGreeting: ChatMessage = {
     id: 'greeting',
     role: 'assistant',
-    content: `Ask me anything about StreamX v${release.version} — 4K video quality, EAX 4.1 surround sound, smoother UI animations, Android APK installation, or adding Phisher98 Extensions.`,
+    content: `Ask me anything about StreamX v${release.version} — the Liquid Glass navigation bar, tap-and-drag water-fluid animations, APK size optimization, 4K UHD & EAX 4.1 surround sound, or Android setup.`,
   };
 
   const [messages, setMessages] = useState<ChatMessage[]>([initialGreeting]);
@@ -33,6 +33,7 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
   const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
   const [typedText, setTypedText] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [lastQuestion, setLastQuestion] = useState<string | null>(null);
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const typingTimerRef = useRef<number | null>(null);
@@ -44,7 +45,7 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
             {
               id: 'greeting',
               role: 'assistant',
-              content: `Ask me anything about StreamX v${release.version} — 4K video quality, EAX 4.1 surround sound, smoother UI animations, Android APK installation, or adding Phisher98 Extensions.`,
+              content: `Ask me anything about StreamX v${release.version} — the Liquid Glass navigation bar, tap-and-drag water-fluid animations, APK size optimization, 4K UHD & EAX 4.1 surround sound, or Android setup.`,
             },
           ]
         : prev,
@@ -100,21 +101,25 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
     }, 16);
   };
 
-  const sendQuestion = async (questionText: string) => {
+  const sendQuestion = async (questionText: string, isRetry = false) => {
     const trimmed = questionText.trim();
     if (!trimmed || isLoading) return;
 
     stopTypingAnimation();
+    setLastQuestion(trimmed);
 
-    const userMessage: ChatMessage = {
-      id: `user-${Date.now()}`,
-      role: 'user',
-      content: trimmed,
-    };
+    let nextHistory = messages;
+    if (!isRetry) {
+      const userMessage: ChatMessage = {
+        id: `user-${Date.now()}`,
+        role: 'user',
+        content: trimmed,
+      };
+      nextHistory = [...messages, userMessage];
+      setMessages(nextHistory);
+      setInput('');
+    }
 
-    const nextHistory = [...messages, userMessage];
-    setMessages(nextHistory);
-    setInput('');
     setErrorMsg(null);
     setIsLoading(true);
 
@@ -144,6 +149,7 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
       const replyId = `assistant-${Date.now()}`;
       const replyText = data.reply;
 
+      setLastQuestion(null);
       setMessages((prev) => [
         ...prev,
         {
@@ -170,6 +176,7 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
     stopTypingAnimation();
     setMessages([initialGreeting]);
     setErrorMsg(null);
+    setLastQuestion(null);
     setInput('');
   };
 
@@ -341,10 +348,21 @@ export function StreamXAssistantSection({ release }: StreamXAssistantSectionProp
                 {errorMsg && (
                   <div
                     role="alert"
-                    className="flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs leading-relaxed text-rose-200"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs leading-relaxed text-rose-200"
                   >
-                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-400" aria-hidden="true" />
-                    <span>{errorMsg}</span>
+                    <div className="flex items-start gap-2.5">
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-400" aria-hidden="true" />
+                      <span>{errorMsg}</span>
+                    </div>
+                    {lastQuestion && (
+                      <button
+                        type="button"
+                        onClick={() => void sendQuestion(lastQuestion, true)}
+                        className="shrink-0 rounded-lg border border-rose-400/40 bg-rose-500/20 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-rose-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                      >
+                        Retry
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
