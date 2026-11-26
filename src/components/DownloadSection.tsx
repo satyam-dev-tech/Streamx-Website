@@ -107,7 +107,7 @@ export function DownloadSection({
             {/* Right: Primary direct download action */}
             <div className="min-w-0 flex flex-col justify-center rounded-2xl border border-white/[0.08] bg-black/40 p-5 sm:p-8 lg:col-span-5">
               <p className="text-xs font-medium text-zinc-400">Official APK Download</p>
-              <p className="mt-1 font-display text-xl font-semibold text-white">
+              <p className="mt-1 break-all font-display text-lg font-semibold text-white sm:text-xl">
                 {release.apkFileName}
               </p>
               <p className="mt-1 text-xs text-zinc-400">

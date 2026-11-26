@@ -28,13 +28,13 @@ export interface StreamXRelease {
 
 export const DEFAULT_RELEASE: StreamXRelease = {
   appName: 'StreamX',
-  version: '1.2.0',
-  releaseDate: 'November 15, 2026',
+  version: '4.9.1',
+  releaseDate: 'November 25, 2026',
   fileSize: 'Size Optimized',
   androidCompatibility: 'Android 8.0+ (API 26+)',
   architecture: 'Universal (arm64-v8a / armeabi-v7a)',
-  apkFileName: 'Streamx.apk',
-  downloadUrl: 'https://www.mediafire.com/file/yu8xugkjbml4z2x/Streamx.apk/file',
+  apkFileName: 'StreamX-4.9.1-streamx.12-installable.apk',
+  downloadUrl: 'https://www.mediafire.com/file/4rf4iftpjfieiy5/StreamX-4.9.1-streamx.12-installable.apk/file',
   isPlaceholderBuild: false,
   whatsNew: {
     newFeatures: [

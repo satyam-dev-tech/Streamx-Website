@@ -51,7 +51,7 @@ export function useReleaseManifest() {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
     } else {
-      link.setAttribute('download', release.apkFileName || 'Streamx.apk');
+      link.setAttribute('download', release.apkFileName || 'StreamX-4.9.1-streamx.12-installable.apk');
       link.rel = 'noopener noreferrer';
     }
     document.body.appendChild(link);

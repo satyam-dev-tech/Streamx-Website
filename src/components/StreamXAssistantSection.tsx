@@ -14,7 +14,7 @@ interface StreamXAssistantSectionProps {
 }
 
 const STARTER_PROMPTS = [
-  "What's new in the StreamX v1.2.0 Liquid Glass update?",
+  "What's new in StreamX v4.9.1?",
   'How do I enable 4K video and EAX 4.1 surround sound?',
   'How do I install StreamX on Android?',
   'How do I add the Phisher98 Extensions repository?',

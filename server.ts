@@ -52,13 +52,13 @@ function loadReleaseManifest(): ReleaseManifest {
 
   return {
     appName: 'StreamX',
-    version: '1.2.0',
-    releaseDate: 'November 15, 2026',
+    version: '4.9.1',
+    releaseDate: 'November 25, 2026',
     fileSize: 'Size Optimized',
     androidCompatibility: 'Android 8.0+ (API 26+)',
     architecture: 'Universal (arm64-v8a / armeabi-v7a)',
-    apkFileName: 'Streamx.apk',
-    downloadUrl: 'https://www.mediafire.com/file/yu8xugkjbml4z2x/Streamx.apk/file',
+    apkFileName: 'StreamX-4.9.1-streamx.12-installable.apk',
+    downloadUrl: 'https://www.mediafire.com/file/4rf4iftpjfieiy5/StreamX-4.9.1-streamx.12-installable.apk/file',
   };
 }
 
@@ -76,12 +76,12 @@ If a user asks about ANYTHING unrelated to StreamX (for example: general knowled
 
 VERIFIED STREAMX KNOWLEDGE BASE (do not invent unverified features, stats, or platforms):
 - Product Name: StreamX (Android movie and TV streaming application). Not available for iOS or desktop natively unless run via Android environment; never claim an iOS or Windows release exists.
-- Latest Version: ${manifest.version ?? '1.2.0'} (Released ${manifest.releaseDate ?? 'November 15, 2026'})
-- APK File Name: ${manifest.apkFileName ?? 'Streamx.apk'}
+- Latest Version: ${manifest.version ?? '4.9.1'} (Released ${manifest.releaseDate ?? 'November 25, 2026'})
+- APK File Name: ${manifest.apkFileName ?? 'StreamX-4.9.1-streamx.12-installable.apk'}
 - APK Size / Build: ${manifest.fileSize ?? 'Size Optimized'}
 - Android Compatibility: ${manifest.androidCompatibility ?? 'Android 8.0+ (API 26+)'}, ${manifest.architecture ?? 'Universal (arm64-v8a / armeabi-v7a)'}
-- Official APK Download URL: ${manifest.downloadUrl ?? 'https://www.mediafire.com/file/yu8xugkjbml4z2x/Streamx.apk/file'}
-- Latest v${manifest.version ?? '1.2.0'} Update Highlights:
+- Official APK Download URL: ${manifest.downloadUrl ?? 'https://www.mediafire.com/file/4rf4iftpjfieiy5/StreamX-4.9.1-streamx.12-installable.apk/file'}
+- Latest v${manifest.version ?? '4.9.1'} Update Highlights:
   - Liquid Glass Navigation Bar: Translucent glass design with colourful reflections and a spacious capsule-shaped layout.
   - Water-Fluid Switching Animation: Active navigation indicator stretches, morphs, and flows smoothly between tabs for a realistic liquid effect.
   - Tap & Drag Gestures: Users can switch tabs by tapping or dragging, with the liquid indicator following their finger and smoothly settling on the selected destination.
@@ -101,12 +101,12 @@ VERIFIED STREAMX KNOWLEDGE BASE (do not invent unverified features, stats, or pl
   - Repository Manifest JSON URL: https://raw.githubusercontent.com/phisher98/cloudstream-extensions-phisher/refs/heads/builds/repo.json
   - Setup note: Users can copy the manifest URL from the Extensions section and add it inside StreamX extension settings (if supported by their installed build).
 - 5-Step Android Installation Guide:
-  1. Download the StreamX APK (${manifest.apkFileName ?? 'Streamx.apk'}).
+  1. Download the StreamX APK (${manifest.apkFileName ?? 'StreamX-4.9.1-streamx.12-installable.apk'}).
   2. Open the downloaded APK from browser downloads or the Android Files app.
   3. Allow installation from this source if Android asks ("Install unknown apps" permission for your browser/file manager).
   4. Tap Install.
   5. Open StreamX and enjoy.
-- What's New in v${manifest.version ?? '1.2.0'}:
+- What's New in v${manifest.version ?? '4.9.1'}:
   - New Features: ${featuresList}
   - Improvements: ${improvementsList}
   - Bug Fixes: ${fixesList}

@@ -19,7 +19,7 @@ const INSTALL_STEPS = [
     number: '02',
     title: 'Open the downloaded APK',
     description:
-      'Tap the finished download notification or locate Streamx.apk inside your Android Files app.',
+      'Tap the finished download notification or locate StreamX-4.9.1-streamx.12-installable.apk inside your Android Files app.',
     icon: FileBox,
   },
   {
