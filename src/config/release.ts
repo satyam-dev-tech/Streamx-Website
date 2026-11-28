@@ -29,12 +29,12 @@ export interface StreamXRelease {
 export const DEFAULT_RELEASE: StreamXRelease = {
   appName: 'StreamX',
   version: '4.9.1',
-  releaseDate: 'November 26, 2026',
+  releaseDate: 'November 27, 2026',
   fileSize: 'Size Optimized',
   androidCompatibility: 'Android 8.0+ (API 26+)',
   architecture: 'Universal (arm64-v8a / armeabi-v7a)',
-  apkFileName: 'StreamX-4.9.1-streamx.15.apk',
-  downloadUrl: 'https://www.mediafire.com/file/k62j4pp5st68gen/StreamX-4.9.1-streamx.15.apk/file',
+  apkFileName: 'StreamX-Elastic-Navigation-debug.apk',
+  downloadUrl: 'https://www.mediafire.com/file/0dqp00s2hx1k95v/StreamX-Elastic-Navigation-debug.apk/file',
   isPlaceholderBuild: false,
   whatsNew: {
     newFeatures: [

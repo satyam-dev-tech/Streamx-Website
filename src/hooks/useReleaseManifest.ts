@@ -51,7 +51,7 @@ export function useReleaseManifest() {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
     } else {
-      link.setAttribute('download', release.apkFileName || 'StreamX-4.9.1-streamx.15.apk');
+      link.setAttribute('download', release.apkFileName || 'StreamX-Elastic-Navigation-debug.apk');
       link.rel = 'noopener noreferrer';
     }
     document.body.appendChild(link);
